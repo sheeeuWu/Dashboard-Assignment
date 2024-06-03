@@ -32,16 +32,10 @@ app.use(bodyParser.urlencoded({ extended : false}));
 app.use(cors(
   {
     origin: ["https://dashboard-assignment-frontend.vercel.app"],
-    mode: 'no-cors',
     methods: ["POST", "GET"],
     credentials: true
   }
 ));
-
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
 
 
 /*Routes*/
