@@ -22,12 +22,13 @@ function App() {
   useEffect(() => {
     axios.get('https://dashboard-assignment-api.vercel.app/')
       .then(response => {
+        dispatch({ type: 'SET_DATA', payload: response.data });
         setData(response.data); 
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, []); 
+  }, [dispatch]); 
   
   return (
     <div className="app">
