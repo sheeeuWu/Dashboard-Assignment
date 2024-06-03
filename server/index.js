@@ -29,7 +29,15 @@ app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
+
+mongoose.connect('mongodb+srv://saifali:god_of_war%2AHECTOR%4021@cluster0.sozvqa7.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0');
 
 /*Routes*/
 app.use("/analytics", analyticsRoutes);
