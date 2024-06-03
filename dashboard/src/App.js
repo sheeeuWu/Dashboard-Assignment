@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
 import Layout from "scenes/layout";
@@ -11,12 +11,23 @@ import AlertSeverity from "scenes/alertSeverity";
 import AlertTrend from "scenes/alertTrend";
 import SourceIPMap from "scenes/sourceIPMap";
 import Breakdown from "scenes/breakdown";
-
+import axios from "axios";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  
+  const [data, setData] = useState(null); 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get('https://dashboard-assignment-api.vercel.app/')
+      .then(response => {
+        setData(response.data); 
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); 
   
   return (
     <div className="app">
