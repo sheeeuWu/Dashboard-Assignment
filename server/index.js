@@ -37,7 +37,11 @@ app.use(cors(
   }
 ));
 
-mongoose.connect('mongodb+srv://saifali:god_of_war%2AHECTOR%4021@cluster0.sozvqa7.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+
 
 /*Routes*/
 app.use("/analytics", analyticsRoutes);
