@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
 app.use(cors(
   {
-    origin: ["https://dashboard-assignment-frontend.vercel.app/"],
+    origin: ["https://dashboard-assignment-frontend.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
