@@ -20,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('https://dashboard-assignment-api.vercel.app/')
+    axios.get('https://dashboard-assignment-api.vercel.app')
       .then(response => {
         dispatch({ type: 'SET_DATA', payload: response.data });
         setData(response.data); 
