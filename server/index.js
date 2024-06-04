@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended : false}));
 var cors = require('cors')
 app.use(cors(
   {
-    origin: ["https://dashboard-assignment-frontend.vercel.app"],
+    origin: "https://dashboard-assignment-frontend.vercel.app",
     methods: ["POST", "GET"],
     credentials: true
   }
